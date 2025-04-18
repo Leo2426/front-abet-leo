@@ -40,6 +40,7 @@ export function Tabla() {
 
     const handleEdit = (product: Product) => {
         setEditingProduct(product);
+        setDialogOpen(true);
     };
 
     const columns: GridColDef[] = [
@@ -76,7 +77,10 @@ export function Tabla() {
         <Box>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
                 <Typography variant="h6">Ejercicio ABET - CRUD Fake Store API</Typography>
-                <Button variant="contained" onClick={() => setDialogOpen(true)}>
+                <Button variant="contained" onClick={() => {
+                    setEditingProduct(null);
+                    setDialogOpen(true);
+                }}>
                     Añadir Producto
                 </Button>
             </Box>
@@ -91,7 +95,6 @@ export function Tabla() {
                     pagination: {paginationModel: {page: 0, pageSize: 5}},
                 }}
                 sx={{border: 0}}
-                autoHeight
             />
 
             <AddProductDialog
